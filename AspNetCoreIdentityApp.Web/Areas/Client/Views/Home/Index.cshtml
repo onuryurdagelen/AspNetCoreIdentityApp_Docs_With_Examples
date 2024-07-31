@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@* <h1>@Localizer["Welcome"]</h1> *@
+<p>@ViewData["Message"] @User.Identity!.Name</p>
+
+<input type="file" id="fileInput" />
+<div id="imageDimensions"></div>
+
+<script>
+    document.getElementById('fileInput').addEventListener('change', function (event) {
+        var file = event.target.files[0];
+        if (file) {
+            var img = new Image();
+            img.onload = function () {
+                var width = img.width;
+                var height = img.height;
+                document.getElementById('imageDimensions').innerText = `Width: ${width}px, Height: ${height}px`;
+            }
+            img.src = URL.createObjectURL(file);
+        }
+    });
+</script>

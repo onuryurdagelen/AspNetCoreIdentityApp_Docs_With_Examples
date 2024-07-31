@@ -1,0 +1,56 @@
+﻿@model List<RoleViewModel>
+
+
+<h1>Users</h1>
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <p class="alert alert-success">@TempData["SuccessMessage"]</p>
+        }
+
+        @if (Model.Count > 0)
+        {
+           
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Role Id</th>
+                        <th>Name</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.RoleId</td>
+                            <td>@user.Name</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+
+            </table>
+        }
+        else
+        {
+            <p class="alert alert-outline-info">Role list is empty for now!</p>
+        }
+
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-3 d-flex ">
+            <a type="button" asp-controller="Role" asp-action="AddRole" class="btn btn-outline-primary btn-block"><i class="fa fa-plus"></i> Add Role</a>
+        </div>
+    </div>
+
+</div>

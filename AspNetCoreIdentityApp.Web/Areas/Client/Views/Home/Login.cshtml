@@ -1,0 +1,58 @@
+﻿@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+
+
+  <div class="login-form-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content">
+                        <div class="card login-form mb-0">
+                            <div class="card-body pt-5">
+                                <a class="text-center" href="index.html"> <h4>Rosella</h4></a>
+
+                            @if (TempData["ErrorMessage"] != null)
+                            {
+                                <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                            }
+
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+
+                            <form asp-controller="Home" asp-action="Login" asp-area="Client" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" method="post" class="mt-5 mb-5 login-input">
+                                <input type="hidden" asp-for="ReturnUrl" value="@Context.Request.Query["returnUrl"]" />
+                                <div class="form-group">
+                                    <input type="email" asp-for="EmailAddress" class="form-control" placeholder="Email Address">
+                                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                            <input asp-for="RememberMe" type="checkbox" class="form-check-input">
+                                        <label asp-for="RememberMe" class="form-check-label"></label>
+                                    </div>
+                                   
+                                   
+                                </div>
+                                <button type="submit" class="btn login-form__btn submit w-100">Login</button>
+                            </form>
+                            <p class="mt-5 login-form__footer">You dont have account? <a asp-controller="Home" asp-action="Register" class="text-primary">Register</a> now</p>
+                            <p class="mt-5 login-form__footer"><a asp-controller="Home" asp-action="ForgotPassword" class="text-primary">Forgot password?</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

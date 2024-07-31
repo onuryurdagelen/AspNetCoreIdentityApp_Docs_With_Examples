@@ -1,0 +1,33 @@
+﻿@model AddRoleViewModel
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+       
+        
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Add Role</h3>
+                </div>
+                <div class="card-body box-profile">
+                    <form asp-controller="Role" asp-action="AddRole" class="form-horizontal">
+                        <div class="form-group row">
+                            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" asp-for="Name" placeholder="RoleName">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"><b>Create</b></button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

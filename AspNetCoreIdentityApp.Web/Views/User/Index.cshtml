@@ -1,0 +1,47 @@
+﻿@model List<UserViewModel>
+
+<h1>Users</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Phone</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserId</td>
+                        <td>@user.FullName</td>
+                        <td>@user.EmailAddress</td>
+                        <td>@user.Phone</td>
+                        <td>@user.Roles</td>
+                        <td>
+                            <a href="/User/Edit?userId=@user.UserId" class="btn btn-sm btn-app">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+    
+
+</div>
+
+
+
+
+
